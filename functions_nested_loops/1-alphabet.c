@@ -1,17 +1,10 @@
 #include "main.h"
 
 /**
- * main - Entryp point
+ * main - Entryp point: print out a-z
  *
  * Return: Always 0 (Success)
  */
-void print_alphabet(void);
-
-/**
- * main function here
- *
- */
-	
 
 void print_alphabet(void)
 {
