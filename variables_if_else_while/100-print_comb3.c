@@ -11,25 +11,26 @@ int main(void)
 	int j;
 
 	i = 48;
-	while (i < 57)
+	while (i <= 57)
 	{
-		j = i + 1;
+		j = 48;
 		while (j <= 57)
 		{
-			putchar(i);
-			putchar(j);
-			if (i != 56)
+			if (i < j)
 			{
+				putchar(i);
+				putchar(j);
+				if (i == 56 && j == 57)
+				{
+					putchar('\n');
+					return (0);
+				}
 				putchar(44);
 				putchar(32);
 			}
-			else
-			{
-				putchar('\n');
-			}
-			j++;
+			j = j + 1;
 		}
-		i++;
+		i = i + 1;
 	}
 	return (0);
 }
