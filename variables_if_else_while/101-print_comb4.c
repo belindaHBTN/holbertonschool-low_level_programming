@@ -10,39 +10,34 @@ int main(void)
 	int i;
 	int j;
 	int k;
-	int n;
 
 	i = 48;
-	while (i < 56)
+	while (i <= 57)
 	{
-		j = i + 1;
-		while (j < 57)
+		j = 48;
+		while (j <= 57)
 		{
-			k = j + 1;
+			k = 48;
 			while (k <= 57)
 			{
-				putchar(i);
-				putchar(j);
-				putchar(k);
-				if (i != 55)
+				if (i < j && j < k)
 				{
+					putchar(i);
+					putchar(j);
+					putchar(k);
+					if (i == j - 1 && j == k - 1 && k == 57)
+					{
+						putchar('\n');
+						return (0);
+					}
 					putchar(44);
 					putchar(32);
-				}
-				else
-				{
-					return (0);
 				}
 				k++;
 			}
 			j++;
 		}
 		i++;
-	}
-	n = 0;
-	while (n < 2)
-	{
-		putchar('\n');
 	}
 	return (0);
 }
