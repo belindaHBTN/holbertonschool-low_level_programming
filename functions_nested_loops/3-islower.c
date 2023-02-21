@@ -2,9 +2,9 @@
 
 /**
  * _islower - check if the input is a lowercase character
- * @c - input, will be converted to ASCII number automatically
+ * @c: input, will be converted to ASCII number automatically
  *
- * Return: 1 means lowercase alphabet, 0 means others
+ * Return: 1 if the input is a lowercase alphabet. 0 otherwise
  */
 int _islower(int c)
 {
