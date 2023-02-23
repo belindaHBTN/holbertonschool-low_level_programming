@@ -19,7 +19,11 @@ void times_table(void)
 		while (num <= 9)
 		{
 			total_num = line_num * num;
-			if (total_num < 10)
+			if (num == 0)
+			{
+				_putchar('0');
+			}
+			else if (total_num < 10)
 			{
 				_putchar(' ');
 				_putchar(total_num + '0');
