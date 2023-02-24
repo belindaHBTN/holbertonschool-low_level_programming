@@ -2,7 +2,6 @@
 
 /**
  * main - Entry point
- * @n: number
  *
  * Description: find the largest prime factor of the input number.
  * Return: Always 0 (success)
@@ -25,6 +24,6 @@ int main(void)
 			i = i + 1;
 		}
 	}
-	printf("%d", i);
+	printf("%d\n", i);
 	return (0);
 }
