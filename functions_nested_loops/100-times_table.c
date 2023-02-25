@@ -56,7 +56,7 @@ void print_times_table(int n)
 					_putchar(' ');
 					_putchar((total_num / 100) + '0');
 					_putchar((total_num / 10 % 10) +'0');
-					_putchar((total_num % 100) + '0');
+					_putchar((total_num % 100 % 10) + '0');
 				}
 				num = num + 1;
 			}
