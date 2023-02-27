@@ -13,7 +13,12 @@ SRC1=	main.c \
 OBJ1=$(SRC1:.c=.o)
 NAME1=1-swap
 
-all:	0 1
+SRC2=	main.c \
+	2-strlen.c
+OBJ2=$(SRC2:.c=.o)
+NAME2=2-strlen
+
+all:	0 1 2
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -23,17 +28,21 @@ all:	0 1
 	$(BETTY) $(SRC1)
 	$(CC) $(CFLAGS) $(SRC1) -o $(NAME1)
 
+2:	$(OBJ2)
+	$(BETTY) $(SRC2)
+	$(CC) $(CFLAGS) $(SRC2) -o $(NAME2)
+
 0-dev:
-	$(CC) $(SRC0) -o $(NAMER0
+	$(CC) $(SRC0) -o $(NAMER)
 
 1-dev:
 	$(CC) $(SRC1) -o $(NAME1)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1)
+	$(NAME0) $(NAME1) $(NAME2)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2)
 
 re: fclean all
