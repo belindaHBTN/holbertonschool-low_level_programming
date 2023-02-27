@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * reset_to_98 - to be edited
- * @n: to be edited
+ * reset_to_98 - update the value of n
+ * @n: the address of n
  *
- * Description: to be edited
+ * Description: update the value of n
  */
 void reset_to_98(int *n)
 {
