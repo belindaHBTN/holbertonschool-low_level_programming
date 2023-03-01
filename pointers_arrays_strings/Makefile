@@ -47,6 +47,24 @@ SRC7=	main.c \
 OBJ7=$(SRC7:.c=.o)
 NAME7=7-puts_half
 
+SRC8=	main.c \
+	_putchar.c \
+	8-print_array.c
+OBJ8=$(SRC8:.c=.o)
+NAME8=8-print_array.c
+
+SRC9=	main.c \
+	_putchar.c \
+	7-puts_half.c
+OBJ9=$(SRC9:.c=.o)
+NAME9=7-puts_half
+
+SRC10=	main.c \
+	_putchar.c \
+	7-puts_half.c
+OBJ10=$(SRC10:.c=.o)
+NAME10=7-puts_half
+
 
 all:	0 1 2 3 4 5 6 7 8 9 10
 
