@@ -29,7 +29,13 @@ SRC4=	main.c \
 OBJ4=$(SRC4:.c=.o)
 NAME4=4-print_rev
 
-all:	0 1 2 3 4
+SRC5=	main.c \
+	_putchar.c \
+	5-rev_string.c	
+OBJ5=$(SRC5:.c=.o)
+NAME5=5-rev_string
+
+all:	0 1 2 3 4 5
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -51,14 +57,18 @@ all:	0 1 2 3 4
 	$(BETTY) $(SRC4)
 	$(CC) $(CFLAGS) $(SRC4) -o $(NAME4)
 
+5:	$(OBJ5)
+	$(BETTY) $(SRC5)
+	$(CC) $(CFLAGS) $(SRC5) -o $(NAME5)
+
 0-dev:
 	$(CC) $(SRC0) -o $(NAMER)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4)
+	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5)
 
 re: fclean all
