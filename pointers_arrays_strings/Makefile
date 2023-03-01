@@ -23,7 +23,12 @@ SRC3=	main.c \
 OBJ3=$(SRC3:.c=.o)
 NAME3=3-puts
 
-all:	0 1 2 3
+SRC4=	main.c \
+	4-print_rev.c	
+OBJ4=$(SRC4:.c=.o)
+NAME4=4-print_rev
+
+all:	0 1 2 3 4
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -41,17 +46,18 @@ all:	0 1 2 3
 	$(BETTY) $(SRC3)
 	$(CC) $(CFLAGS) $(SRC3) -o $(NAME3)
 
+4:	$(OBJ4)
+	$(BETTY) $(SRC4)
+	$(CC) $(CFLAGS) $(SRC4) -o $(NAME4)
+
 0-dev:
 	$(CC) $(SRC0) -o $(NAMER)
 
-1-dev:
-	$(CC) $(SRC1) -o $(NAME1)
-
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1) $(NAME2) $(NAME3)
+	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4)
 
 re: fclean all
