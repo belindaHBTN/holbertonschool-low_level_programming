@@ -24,6 +24,7 @@ OBJ3=$(SRC3:.c=.o)
 NAME3=3-puts
 
 SRC4=	main.c \
+	_putchar.c \
 	4-print_rev.c	
 OBJ4=$(SRC4:.c=.o)
 NAME4=4-print_rev
