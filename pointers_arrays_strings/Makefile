@@ -41,8 +41,14 @@ SRC6=	main.c \
 OBJ6=$(SRC6:.c=.o)
 NAME6=6-puts2
 
+SRC7=	main.c \
+	_putchar.c \
+	7-puts_half.c
+OBJ7=$(SRC7:.c=.o)
+NAME7=7-puts_half
 
-all:	0 1 2 3 4 5 6
+
+all:	0 1 2 3 4 5 6 7 8 9 10
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -71,14 +77,31 @@ all:	0 1 2 3 4 5 6
 6:	$(OBJ6)
 	$(BETTY) $(SRC6)
 	$(CC) $(CFLAGS) $(SRC6) -o $(NAME6)
+
+7:	$(OBJ7)
+	$(BETTY) $(SRC7)
+	$(CC) $(CFLAGS) $(SRC7) -o $(NAME7)
+
+8:	$(OBJ8)
+	$(BETTY) $(SRC8)
+	$(CC) $(CFLAGS) $(SRC8) -o $(NAME8)
+
+9:	$(OBJ9)
+	$(BETTY) $(SRC9)
+	$(CC) $(CFLAGS) $(SRC9) -o $(NAME9)
+
+10:	$(OBJ10)
+	$(BETTY) $(SRC10)
+	$(CC) $(CFLAGS) $(SRC10) -o $(NAME10)
+
 0-dev:
 	$(CC) $(SRC0) -o $(NAMER)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5) $(NAME6)
+	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5) $(NAME6) $(NAME7) $(NAME8) $(NAME9) $(NAME10)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6) $(OBJ7) $(OBJ8) $(OBJ9) $(OBJ10)
 
 re: fclean all
