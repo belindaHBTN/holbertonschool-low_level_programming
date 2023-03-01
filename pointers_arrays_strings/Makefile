@@ -18,7 +18,12 @@ SRC2=	main.c \
 OBJ2=$(SRC2:.c=.o)
 NAME2=2-strlen
 
-all:	0 1 2
+SRC3=	main.c \
+	3-puts.c	
+OBJ3=$(SRC3:.c=.o)
+NAME3=3-puts
+
+all:	0 1 2 3
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -32,6 +37,10 @@ all:	0 1 2
 	$(BETTY) $(SRC2)
 	$(CC) $(CFLAGS) $(SRC2) -o $(NAME2)
 
+3:	$(OBJ3)
+	$(BETTY) $(SRC3)
+	$(CC) $(CFLAGS) $(SRC3) -o $(NAME3)
+
 0-dev:
 	$(CC) $(SRC0) -o $(NAMER)
 
@@ -40,9 +49,9 @@ all:	0 1 2
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1) $(NAME2)
+	$(NAME0) $(NAME1) $(NAME2) $(NAME3)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1) $(OBJ2)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3)
 
 re: fclean all
