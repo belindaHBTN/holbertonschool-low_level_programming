@@ -35,7 +35,14 @@ SRC5=	main.c \
 OBJ5=$(SRC5:.c=.o)
 NAME5=5-rev_string
 
-all:	0 1 2 3 4 5
+SRC6=	main.c \
+	_putchar.c \
+	6-puts2.c
+OBJ6=$(SRC6:.c=.o)
+NAME6=6-puts2
+
+
+all:	0 1 2 3 4 5 6
 
 0:	$(OBJ0)
 	$(BETTY) $(SRC0)
@@ -61,14 +68,17 @@ all:	0 1 2 3 4 5
 	$(BETTY) $(SRC5)
 	$(CC) $(CFLAGS) $(SRC5) -o $(NAME5)
 
+6:	$(OBJ6)
+	$(BETTY) $(SRC6)
+	$(CC) $(CFLAGS) $(SRC6) -o $(NAME6)
 0-dev:
 	$(CC) $(SRC0) -o $(NAMER)
 
 clean:
 	$(RM) *~ \#*\# \.\#* \
-	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5)
+	$(NAME0) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5) $(NAME6)
 
 fclean: clean
-	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5)
+	$(RM) $(OBJ0) $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4) $(OBJ5) $(OBJ6)
 
 re: fclean all
