@@ -44,5 +44,5 @@ int _atoi(char *s)
 		}
 		i = i + 1;
 	}
-	return currentNumber;
+	return (currentNumber);
 }
