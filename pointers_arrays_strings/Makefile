@@ -51,13 +51,13 @@ SRC8=	main.c \
 	_putchar.c \
 	8-print_array.c
 OBJ8=$(SRC8:.c=.o)
-NAME8=8-print_array.c
+NAME8=8-print_array
 
 SRC9=	main.c \
 	_putchar.c \
-	7-puts_half.c
+	9-strcpy.c	
 OBJ9=$(SRC9:.c=.o)
-NAME9=7-puts_half
+NAME9=9-strcpy
 
 SRC10=	main.c \
 	_putchar.c \
