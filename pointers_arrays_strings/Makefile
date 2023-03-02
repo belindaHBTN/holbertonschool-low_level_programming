@@ -61,10 +61,9 @@ NAME9=9-strcpy
 
 SRC10=	main.c \
 	_putchar.c \
-	7-puts_half.c
+	100-atoi.c
 OBJ10=$(SRC10:.c=.o)
-NAME10=7-puts_half
-
+NAME10=100-atoi
 
 all:	0 1 2 3 4 5 6 7 8 9 10
 
