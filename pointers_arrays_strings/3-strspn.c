@@ -9,22 +9,27 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	int i = 0;
-	int j = 0;
-	unsigned int count = 0;
-	char *arr = "oleh";
-
-	while (*(s + i) != '\0')
-	{
-		while (j < 4)
-		{
-			if (*(s + i) == *(arr + j))
-			{
-				count = count + 1;
-			}
-			j = j + 1;
-		}
-		i = i + 1;
-	}
-	return (count);
+    int i = 0;
+    unsigned int count = 0;
+    
+    while (*(s + i) != '\0')
+    {
+        if ((*(s + i) >= 'a' && *(s + i) <= 'z') || (*(s + i) >= 'A' && *(s + i) <= 'Z'))
+        {
+            int j = 0;
+            while (*(accept + j) != '\0')
+            {
+                if (*(s + i) == *(accept + j))
+                {
+                    count = count + 1;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        else {
+            break;
+        }
+    }
+    return (count);
 }
