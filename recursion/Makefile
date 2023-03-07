@@ -31,9 +31,9 @@ NAME4=4-print_rev
 
 SRC5=	main.c \
 	_putchar.c \
-	5-string_toupper.c	
+	5-sqrt_recursion.c	
 OBJ5=$(SRC5:.c=.o)
-NAME5=5-string_toupper
+NAME5=5-sqrt_recursion
 
 SRC6=	main.c \
 	_putchar.c \
