@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+/**
+ * check_num - check if every character is a digit
+ * @str: number passed to the program
+ *
+ * Description: check if every character is a digit.
+ * Return: all are digits return 0, otherwise return 1.
+ */
+
 int check_num(char *str)
 {
 	int j;
@@ -26,8 +34,6 @@ int check_num(char *str)
  * Description: add positive numbers.
  * Return: Always be 0.
  */
-
-
 
 int main(int argc, char *argv[])
 {
