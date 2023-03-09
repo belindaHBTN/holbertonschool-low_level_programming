@@ -2,20 +2,19 @@
 #include <stdlib.h>
 
 /**
- * main - print all arguments it receives
+ * main - mutiplies two numbers
  * @argc: a count of the arguments passed to the program
  * @argv: an array of pointers to the strings which are those args
  *
- * Description: print all arguments it receives
- * Return: Always be 0.
+ * Description: mutiplies two numbers
+ * Return: result or error.
  */
 
 int main(int argc, char *argv[])
 {
 	int result;
 
-	(void)argc;
-	if (argv[1] == NULL || argv[2] == NULL)
+	if (argc != 3)
 	{
 		printf("Error\n");
 		return (1);
