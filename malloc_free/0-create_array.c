@@ -19,6 +19,10 @@ char *create_array(unsigned int size, char c)
 		return (NULL);
 	}
 	p = (char *)malloc(sizeof(char) * size);
+	if (p == NULL)
+	{
+		return (NULL);
+	}
 	i = 0;
 	while (i < size)
 	{
