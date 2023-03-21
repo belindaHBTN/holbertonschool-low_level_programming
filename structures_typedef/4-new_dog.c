@@ -33,9 +33,10 @@ char *_strdup(char *str)
 	i = 0;
 	while (i < len)
 	{
-		*(p + i) = *(str + i);
+		p[i] = str[i];
 		i = i + 1;
 	}
+	p[i] = '\0';
 	return (p);
 }
 
