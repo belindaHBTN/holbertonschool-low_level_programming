@@ -2,11 +2,12 @@
 #include <stdio.h>
 
 /**
- * sum_them_all - calculate the total of all arguments
+ * print_numbers - print all arguments
+ * @separator: string between every argument
  * @n: the number of arguments
  *
- * Description: calculate the total of all arguments
- * Return: result (integer)
+ * Description: print all argumnets
+ * Return: nothing
  */
 
 void print_numbers(const char *separator, const unsigned int n, ...)
@@ -19,6 +20,24 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	i = 0;
 	while (i < n)
 	{
-		printf("%d
+		if (i == 0)
+		{
+			printf("%d", va_arg(argp, int));
+		}
+		else
+		{
+			if (separator == NULL)
+			{
+				printf("%d", va_arg(argp, int));
+			}
+			else
+			{
+				printf("%s", separator);
+				printf("%d", va_arg(argp, int));
+			}
+		}
+
+			i = i + 1;
 	}
+	printf("\n");
 }
