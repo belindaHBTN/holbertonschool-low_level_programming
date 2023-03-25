@@ -2,43 +2,56 @@
 #include <stdio.h>
 
 /**
- * print_strings - print argument (string)
- * @separator: the string between arguments
- * @n: the number of arguments
+ * print_all - print anything
+ * @format: a list of types of arguments
  *
- * Description: print arguments
+ * Description: print anything
  * Return: nothing
  */
 
 void print_all(const char * const format, ...)
 {
-    
-    int i = 0;
-    va_list argp; 
+	int i;
+	int j;
+	va_list argp;
 
-    va_start(argp, format);
-    
-    while(format[i] != '\0')
-    {
-        if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's') 
-        {
-            if (format[i] == 'c')
-            {
-                printf("%c\n", va_arg(argp, int));
-            }
-            if (format[i] == 'i')
-            {
-                printf("%d\n", va_arg(argp, int));
-            }
-            if (format[i] == 'f')
-            {
-                printf("%f\n", va_arg(argp, double));
-            }
-            if (format[i] == 's')
-            {
-                printf("%s\n", va_arg(argp, char*));
-            }
-        }
-        i++;
-    }
+	va_start(argp, format);
+
+	i = 0;
+	j = 0;
+	while (format[i] != '\0')
+	{
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f'
+		 || format[i] == 's') && (j > 0))
+		{
+			printf(", ");
+		}
+		switch (format[i])
+		{
+			case 'c':
+				printf("%c", va_arg(argp, int));
+				j = j + 1;
+				break;
+			case 'i':
+				printf("%d", va_arg(argp, int));
+				j = j + 1;
+				break;
+			case 'f':
+				printf("%f", va_arg(argp, double));
+				j = j + 1;
+				break;
+			case 's':
+				if (va_arg(argp, char *) == NULL)
+				{
+					printf("(nil)");
+					j = j + 1;
+					break;
+				}
+				printf("%s", va_arg(argp, char *));
+				j = j + 1;
+				break;
+		}
+		i = i + 1;
+	}
+	printf("\n");
 }
