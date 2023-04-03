@@ -22,6 +22,7 @@ void free_list(list_t *head)
 	while (pCurrent != NULL)
 	{
 		pNext = pCurrent->next;
+		free(pCurrent->str);
 		free(pCurrent);
 		pCurrent = pNext;
 	}
