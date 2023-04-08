@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 /**
  * get_len - calculate the length of the string
  * @s: the string
@@ -19,7 +21,7 @@ unsigned int get_len(const char *s)
 }
 
 /**
- * binary_to_unit - convert a binary number to an unsigned int
+ * binary_to_uint - convert a binary number to an unsigned int
  * @b: pointer pointing to a string of 0 and 1 chars
  *
  * Description: convert a binary number to an unsigned int
@@ -32,11 +34,16 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int result;
 	unsigned int base;
 
+	if (b == NULL)
+	{
+		return (0);
+	}
+
 	len = get_len(b);
+
 	i = len - 1;
 	result = 0;
 	base = 1;
-
 	while (i >= 0)
 	{
 		if (b[i] != '0' && b[i] != '1')
