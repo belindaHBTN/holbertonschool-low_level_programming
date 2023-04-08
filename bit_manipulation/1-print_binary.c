@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * get_len - calculate the length of the binary number
  * @n: number
