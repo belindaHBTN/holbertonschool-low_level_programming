@@ -33,6 +33,10 @@ void print_binary(unsigned long int n)
 	int len;
 	int i;
 
+	if (n == 0)
+	{
+		_putchar('0');
+	}
 	len = get_len(n);
 
 	i = len - 1;
