@@ -37,7 +37,7 @@ unsigned int binary_to_uint(const char *b)
 	result = 0;
 	base = 1;
 
-	while (1 >= 0)
+	while (i >= 0)
 	{
 		if (b[i] != '0' && b[i] != '1')
 		{
@@ -45,7 +45,7 @@ unsigned int binary_to_uint(const char *b)
 		}
 		if (b[i] == '1')
 		{
-			result = result + base'
+			result = result + base;
 		}
 		i = i - 1;
 		base = base * 2;
