@@ -1,44 +1,34 @@
 #include "main.h"
 
 /**
- * ropen - open a file
+ * xopen - open a file
  * @pathname: the specified file
- * @flags: access modes
+ * @is_read: a flag to check if the file is open for reading or writing
  *
  * Description: open a file
- * Return: file descriptor on success, 98 on failure
+ * Return: file descriptor on success, 98 or 99 on failure
  */
-int ropen(const char *pathname, int flags)
+int xopen(const char *pathname, int is_read)
 {
 	int fd;
 
-	fd = open(pathname, flags);
-	if (pathname == NULL || fd == -1)
+	if (is_read == 1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", pathname);
-		exit(98);
+		fd = open(pathname, O_RDONLY);
+		if (pathname == NULL || fd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", pathname);
+			exit(98);
+		}
 	}
-	return (fd);
-}
-
-/**
- * wopen - open a file
- * @pathname: the specified file
- * @flags: access modes
- * @mode: permissions
- *
- * Description: open a file
- * Return: file descriptor on success, 99 on failure
- */
-int wopen(const char *pathname, int flags, mode_t mode)
-{
-	int fd;
-
-	fd = open(pathname, flags, mode);
-	if (pathname == NULL || fd == -1)
+	else
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", pathname);
-		exit(99);
+		fd = open(pathname, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+		if (pathname == NULL || fd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", pathname);
+			exit(99);
+		}
 	}
 	return (fd);
 }
@@ -133,8 +123,8 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	fd_from = ropen(argv[1], O_RDONLY);
-	fd_to = wopen(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd_from = xopen(argv[1], 1);
+	fd_to = xopen(argv[2], 0);
 
 	bytes_read = xread(fd_from, buf, 1024, argv[1]);
 	while (bytes_read != 0)
