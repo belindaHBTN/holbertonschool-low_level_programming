@@ -44,6 +44,28 @@ int wopen(const char *pathname, int flags, mode_t mode)
 }
 
 /**
+ * xclose - close a file descriptor
+ * @fd: file descriptor
+ * @file_name: the name of the file that need to be closed
+ *
+ * Description: close a file descriptor
+ * Return: 1 on success, 100 on failure
+ */
+int xclose(int fd, char *file_name)
+{
+	int res;
+
+	res = close(fd);
+	if (res == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file_name);
+		exit(100);
+	}
+	return (res);
+}
+
+
+/**
  * xread - read from a file descriptor
  * @fd: file descriptor
  * @buf: buffer
@@ -89,6 +111,8 @@ ssize_t xwrite(int fd, char *buf, size_t count, char *name_of_file)
 	return (bytes_write);
 }
 
+
+
 /**
  * main - check the code
  * @argc: a count of the arguments passed to the program
@@ -102,8 +126,6 @@ int main(int argc, char *argv[])
 	int fd_to;
 	char buf[1024];
 	int bytes_read;
-	int res_from;
-	int res_to;
 
 	if (argc != 3)
 	{
@@ -121,13 +143,7 @@ int main(int argc, char *argv[])
 		bytes_read = xread(fd_from, buf, 1024, argv[1]);
 	}
 
-	res_from = close(fd_from, argv[1]);
-	res_to = close(fd_to, argv[2]);
-	if (res_from == -1 || res_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file_name);
-		exit(100);
-	}
-
+	xclose(fd_from, argv[1]);
+	xclose(fd_to, argv[2]);
 	return (0);
 }
