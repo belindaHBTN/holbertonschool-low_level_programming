@@ -21,7 +21,7 @@ int ropen(const char *pathname, int flags)
 	return (fd);
 }
 
-int wopen(const char *pathname, int flags, mode_t mode);
+int wopen(const char *pathname, int flags, mode_t mode)
 {
 	int fd;
 
@@ -34,14 +34,14 @@ int wopen(const char *pathname, int flags, mode_t mode);
 	return (fd);
 }
 
-int close(int fd, fdvalue)
+int xclose(int fd, char *file_name)
 {
 	int res;
 
-	res = close(fd)
-	if (res = -1)
+	res = close(fd);
+	if (res == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", fdvalue);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file_name);
 		exit(100);
 	}
 	return (res);
@@ -70,7 +70,7 @@ ssize_t xwrite(int fd, char *buf, size_t count, char *name_of_file)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", name_of_file);
 		exit(99);
 	}
-	return (butes_write);
+	return (bytes_write);
 }
 
 int main(int argc, char *argv[])
@@ -79,7 +79,6 @@ int main(int argc, char *argv[])
 	int fd_to;
 	char buf[1024];
 	int bytes_read;
-	int bytes_write;
 
 	if (argc != 3)
 	{
@@ -93,11 +92,11 @@ int main(int argc, char *argv[])
 	bytes_read = xread(fd_from, buf, 1024, argv[1]);
 	while (bytes_read != 0)
 	{
-		bytes_write = xwrite(fd_to, buf, bytes_read, argv[2]);
+		xwrite(fd_to, buf, bytes_read, argv[2]);
 		bytes_read = xread(fd_from, buf, 1024, argv[1]);
 	}
 
-	close(fd_from, argv[1]);
-	close(fd_to, argv[2]);
+	xclose(fd_from, argv[1]);
+	xclose(fd_to, argv[2]);
 	return (0);
 }
