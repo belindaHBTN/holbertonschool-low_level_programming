@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * append_text_to_file - append text at the end of a file
- * @filename: the name of the file need to be created
- * @text_content: the content that will be wrote to the file
+ * ropen - open a file
+ * @pathname: the specified file
+ * @flags: access modes
  *
- * Description: a function that append text at the end of a file
- * Return: 1 on success, -1 on failure
+ * Description: open a file
+ * Return: file descriptor on success, 98 on failure
  */
 int ropen(const char *pathname, int flags)
 {
@@ -21,6 +21,15 @@ int ropen(const char *pathname, int flags)
 	return (fd);
 }
 
+/**
+ * wopen - open a file
+ * @pathname: the specified file
+ * @flags: access modes
+ * @mode: permissions
+ *
+ * Description: open a file
+ * Return: file descriptor on success, 99 on failure
+ */
 int wopen(const char *pathname, int flags, mode_t mode)
 {
 	int fd;
@@ -34,19 +43,16 @@ int wopen(const char *pathname, int flags, mode_t mode)
 	return (fd);
 }
 
-int xclose(int fd, char *file_name)
-{
-	int res;
-
-	res = close(fd);
-	if (res == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file_name);
-		exit(100);
-	}
-	return (res);
-}
-
+/**
+ * xread - read from a file descriptor
+ * @fd: file descriptor
+ * @buf: buffer
+ * @count: the bytes that will be read
+ * @name_of_file: name of the file
+ *
+ * Description: read from a file descriptor
+ * Return: bytes that has been read on success, 98 on failure
+ */
 ssize_t xread(int fd, char *buf, size_t count, char *name_of_file)
 {
 	ssize_t bytes_read;
@@ -60,6 +66,16 @@ ssize_t xread(int fd, char *buf, size_t count, char *name_of_file)
 	return (bytes_read);
 }
 
+/**
+ * xwrite - write to a file descriptor
+ * @fd: file descriptor
+ * @buf: buffer
+ * @count: the bytes that will be wrote
+ * @name_of_file: name of the file
+ *
+ * Description: write to a file descriptor
+ * Return: bytes that has been wrote on success, 99 on failure
+ */
 ssize_t xwrite(int fd, char *buf, size_t count, char *name_of_file)
 {
 	ssize_t bytes_write;
@@ -73,12 +89,21 @@ ssize_t xwrite(int fd, char *buf, size_t count, char *name_of_file)
 	return (bytes_write);
 }
 
+/**
+ * main - check the code
+ * @argc: a count of the arguments passed to the program
+ * @argv: an array of pointers to the strings which are those arguments
+ *
+ * Return: Always 0.
+ */
 int main(int argc, char *argv[])
 {
 	int fd_from;
 	int fd_to;
 	char buf[1024];
 	int bytes_read;
+	int res_from;
+	int res_to;
 
 	if (argc != 3)
 	{
@@ -96,7 +121,13 @@ int main(int argc, char *argv[])
 		bytes_read = xread(fd_from, buf, 1024, argv[1]);
 	}
 
-	xclose(fd_from, argv[1]);
-	xclose(fd_to, argv[2]);
+	res_from = close(fd_from, argv[1]);
+	res_to = close(fd_to, argv[2]);
+	if (res_from == -1 || res_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %s\n", file_name);
+		exit(100);
+	}
+
 	return (0);
 }
