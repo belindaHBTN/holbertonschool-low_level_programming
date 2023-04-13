@@ -9,7 +9,7 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	long unsigned int i;
+	unsigned long int i;
 	hash_node_t *pRear;
 	int flag;
 
@@ -18,7 +18,7 @@ void hash_table_print(const hash_table_t *ht)
 		return;
 	}
 
-	printf ("{");
+	printf("{");
 	i = 0;
 	flag = 1;
 	while (i < (ht->size))
@@ -40,5 +40,5 @@ void hash_table_print(const hash_table_t *ht)
 		}
 		i = i + 1;
 	}
-	printf ("}\n");
+	printf("}\n");
 }
