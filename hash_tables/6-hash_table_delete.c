@@ -19,6 +19,8 @@ void hash_table_delete(hash_table_t *ht)
 	}
 
 	i = 0;
+	pRear = (ht->array)[i];
+	tmp = pRear;
 	while (i < ht->size)
 	{
 		pRear = (ht->array)[i];
