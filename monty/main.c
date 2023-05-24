@@ -24,6 +24,12 @@ int main(int argc, char **argv)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub",sub},
+		{"div", div},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
