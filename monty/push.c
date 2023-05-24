@@ -10,6 +10,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 	char *token;
 	int num;
+	int integer_check;
 
 
 	if (!stack)
@@ -28,7 +29,7 @@ void push(stack_t **stack, unsigned int line_number)
 	integer_check = is_integer(token);
 	if (integer_check == -1)
 	{
-		fprintf(stderr,"L%d: push integer\n");
+		fprintf(stderr,"L%d: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
